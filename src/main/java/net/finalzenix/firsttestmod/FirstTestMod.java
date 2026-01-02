@@ -69,6 +69,11 @@ public class FirstTestMod {
     public void onServerStarting(ServerStartingEvent event) {
     }
 
+    @SubscribeEvent
+    public void onRegisterCommands(net.neoforged.neoforge.event.RegisterCommandsEvent event) {
+        net.finalzenix.firsttestmod.command.CheckViewCommand.register(event.getDispatcher());
+    }
+
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = FirstTestMod.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     static class ClientModEvents {
