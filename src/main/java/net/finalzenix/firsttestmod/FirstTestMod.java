@@ -42,7 +42,6 @@ import java.util.ArrayList;
 public class FirstTestMod {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "firsttestmod";
-    public static ArrayList<DeferredItem<Item>> itemsToAdd = new ArrayList<>();
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -59,8 +58,6 @@ public class FirstTestMod {
 
         ModItems.register(modEventBus);
 
-        itemsToAdd.add(ModItems.BISMUTH);
-
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
@@ -74,7 +71,7 @@ public class FirstTestMod {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
-            for(DeferredItem<Item> item : itemsToAdd){
+            for(DeferredItem<Item> item : ModItems.arrayItems){
                 event.accept(item);
             }
         }
