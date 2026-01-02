@@ -1,5 +1,6 @@
 package net.finalzenix.firsttestmod;
 
+import net.finalzenix.firsttestmod.entity.ModEntities;
 import net.finalzenix.firsttestmod.item.ModItems;
 import net.finalzenix.firsttestmod.recipe.ModRecipeProvider;
 import org.slf4j.Logger;
@@ -42,6 +43,7 @@ public class FirstTestMod {
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
