@@ -30,14 +30,12 @@ public class BrokenScriptRenderer extends EntityRenderer<FirstEntity> {
     public void render(FirstEntity entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         poseStack.pushPose();
 
-        // 1. Rotate to face the camera (Billboard effect)
         poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
-        
-        // 2. Scale it appropriately (adjust as needed, 1.0f is 1 block wide/tall roughly)
+
         poseStack.scale(1.5f, 1.5f, 1.5f);
 
         // 3. Translate up so the feet are on the ground (0.5 is half height)
-        poseStack.translate(0.0F, 0.5F, 0.0F);
+        poseStack.translate(0.0F, 0.6F, 0.0F);
         poseStack.mulPose(Axis.YP.rotationDegrees(180.0F)); // Correct texture orientation if needed
 
         // 4. Render the quad
@@ -68,7 +66,6 @@ public class BrokenScriptRenderer extends EntityRenderer<FirstEntity> {
         org.joml.Vector3f normalVec = new org.joml.Vector3f(0.0f, 1.0f, 0.0f);
         normal.transform(normalVec);
         consumer.setNormal(normalVec.x(), normalVec.y(), normalVec.z());
-        
-        // consumer.endVertex(); // Not present in VertexConsumer interface in this version
+
     }
 }

@@ -1,10 +1,16 @@
 package net.finalzenix.firsttestmod.entity.custom;
 
+import net.finalzenix.firsttestmod.entity.ai.StalkPlayerGoal;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,15 +22,14 @@ public class FirstEntity extends Monster {
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 50.0)      // Hard to kill
-                .add(Attributes.MOVEMENT_SPEED, 0.35)  // Fast
+                .add(Attributes.MOVEMENT_SPEED, 0.6)  // Fast
                 .add(Attributes.ATTACK_DAMAGE, 1.0);   // Hurts a lot
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new net.finalzenix.firsttestmod.entity.ai.StalkPlayerGoal(this, 1.2D));
-        this.goalSelector.addGoal(8, new net.minecraft.world.entity.ai.goal.RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(1, new net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal<>(this, net.minecraft.world.entity.player.Player.class, true));
+        this.goalSelector.addGoal(1, new StalkPlayerGoal<>(this, Player.class));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
     /**

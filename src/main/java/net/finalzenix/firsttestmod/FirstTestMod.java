@@ -71,7 +71,9 @@ public class FirstTestMod {
 
     @SubscribeEvent
     public void onRegisterCommands(net.neoforged.neoforge.event.RegisterCommandsEvent event) {
-        net.finalzenix.firsttestmod.command.CheckViewCommand.register(event.getDispatcher());
+        net.finalzenix.firsttestmod.command.SpawnStalkerCommand.register(event.getDispatcher());
+        net.finalzenix.firsttestmod.command.KillStalkerCommand.register(event.getDispatcher());
+        net.finalzenix.firsttestmod.command.VisualizeHiddenSpotsCommand.register(event.getDispatcher());
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
