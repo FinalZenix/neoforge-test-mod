@@ -26,3 +26,6 @@ run-data
 repo
 /tools/pixelator.html
 /src/generated/resources/.cache/9fb1092f32d4fcbf9e061ffd718d4ec689c6c95e
+
+# Custom prompt
+educational_prompt.md

@@ -15,7 +15,7 @@ public class ModEntities {
 
     public static final DeferredHolder<EntityType<?>, EntityType<FirstEntity>> FIRST_ENTITY =
             ENTITY_TYPES.register("first_entity", () -> EntityType.Builder.of(FirstEntity::new, MobCategory.MONSTER)
-                    .sized(0.6f, 1.95f) // Hitbox size (Width, Height) - similar to a Zombie
+                    .sized(0.6f, 0.5f)
                     .build("first_entity"));
 
     public static void register(IEventBus eventBus){
