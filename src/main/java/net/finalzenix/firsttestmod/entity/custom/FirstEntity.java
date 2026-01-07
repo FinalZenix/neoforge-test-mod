@@ -1,5 +1,6 @@
 package net.finalzenix.firsttestmod.entity.custom;
 
+import net.finalzenix.firsttestmod.entity.ai.LongTargetGoal;
 import net.finalzenix.firsttestmod.entity.ai.StalkPlayerGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -49,7 +50,9 @@ public class FirstEntity extends Monster {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 50.0)      // Hard to kill
                 .add(Attributes.MOVEMENT_SPEED, 0.6)  // Fast
-                .add(Attributes.ATTACK_DAMAGE, 1.0);   // Hurts a lot
+                .add(Attributes.ATTACK_DAMAGE, 1.0)
+                .add(Attributes.FOLLOW_RANGE, 256.0);   // Hurts a lot
+
     }
 
     @Override
@@ -80,7 +83,7 @@ public class FirstEntity extends Monster {
         
         // Existing Goals (Modify these later)
         this.goalSelector.addGoal(1, new StalkPlayerGoal<>(this, Player.class));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, false));
     }
 
     /* ==================================================================================================
